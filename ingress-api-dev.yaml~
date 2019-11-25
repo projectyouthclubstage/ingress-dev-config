@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-dev
+  namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+   rules:
+    - host: api.dev.youthclubstage.de
+      http:
+        paths:
+        - path: /pex
+          backend:
+            serviceName: pipeline-example-srv
+            servicePort: 80
